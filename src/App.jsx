@@ -91,7 +91,7 @@ function App() {
             HELLO, I'M
           </p>
 
-          <h1>
+          <h1 className="glitch" data-text="tyG">
             tyG
           </h1>
 
