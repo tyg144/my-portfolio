@@ -96,7 +96,7 @@ function App() {
           </h1>
 
           <h2>
-            Entrepreneur & Trader
+            Entrepreneur ♠
           </h2>
 
           <p className="description">
