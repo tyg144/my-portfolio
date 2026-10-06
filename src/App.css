@@ -1,0 +1,10 @@
+function App() {
+  return (
+    <div>
+      <h1>Hello, I'm TyG</h1>
+      <p>Welcome to my portfolio.</p>
+    </div>
+  )
+}
+
+export default App
