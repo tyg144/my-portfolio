@@ -10,25 +10,10 @@ export default function MusicPlayer() {
 
     audio.volume = 0.35
 
-    const startMusic = () => {
-      if (audio.paused) {
-        audio.play().catch((error) => {
-          console.log("Autoplay blocked:", error)
-        })
-      }
-    }
-
-    // Attempt autoplay when the website opens.
-    startMusic()
-
-    // Retry after the visitor interacts with the page.
-    document.addEventListener("pointerdown", startMusic, { once: true })
-    document.addEventListener("keydown", startMusic, { once: true })
-
-    return () => {
-      document.removeEventListener("pointerdown", startMusic)
-      document.removeEventListener("keydown", startMusic)
-    }
+    // Attempt to play automatically when a visitor arrives.
+    audio.play().catch((error) => {
+      console.log("Browser blocked autoplay:", error)
+    })
   }, [])
 
   return (
