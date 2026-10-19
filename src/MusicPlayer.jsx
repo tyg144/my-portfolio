@@ -1,20 +1,39 @@
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
 
 export default function MusicPlayer() {
-  const audioRef = useRef(null)
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
+    const audio = audioRef.current;
 
-    audio.volume = 0.35
+    if (!audio) return;
 
-    // Attempt to autoplay when the visitor arrives.
-    audio.play().catch((error) => {
-      console.log("Autoplay blocked by browser:", error)
-    })
-  }, [])
+    audio.volume = 0.35;
+
+    const playMusic = () => {
+      audio.play().catch((error) => {
+        console.log("Music playback blocked:", error);
+      });
+    };
+
+    // Try autoplay when the website loads.
+    playMusic();
+
+    // Retry after the visitor interacts with the website.
+    document.addEventListener("pointerdown", playMusic, {
+      once: true,
+    });
+
+    document.addEventListener("keydown", playMusic, {
+      once: true,
+    });
+
+    return () => {
+      document.removeEventListener("pointerdown", playMusic);
+      document.removeEventListener("keydown", playMusic);
+    };
+  }, []);
 
   return (
     <audio
@@ -24,5 +43,5 @@ export default function MusicPlayer() {
       loop
       preload="auto"
     />
-  )
+  );
 }
