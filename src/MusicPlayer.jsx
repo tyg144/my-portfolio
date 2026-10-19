@@ -10,26 +10,24 @@ export default function MusicPlayer() {
 
     audio.volume = 0.35
 
-    const tryPlay = () => {
-      audio.play().catch(() => {
-        // The browser may block autoplay until user interaction.
-      })
+    const startMusic = () => {
+      if (audio.paused) {
+        audio.play().catch((error) => {
+          console.log("Autoplay blocked:", error)
+        })
+      }
     }
 
-    tryPlay()
+    // Attempt autoplay when the website opens.
+    startMusic()
 
-    const handleFirstInteraction = () => {
-      tryPlay()
-      document.removeEventListener("pointerdown", handleFirstInteraction)
-      document.removeEventListener("keydown", handleFirstInteraction)
-    }
-
-    document.addEventListener("pointerdown", handleFirstInteraction)
-    document.addEventListener("keydown", handleFirstInteraction)
+    // Retry after the visitor interacts with the page.
+    document.addEventListener("pointerdown", startMusic, { once: true })
+    document.addEventListener("keydown", startMusic, { once: true })
 
     return () => {
-      document.removeEventListener("pointerdown", handleFirstInteraction)
-      document.removeEventListener("keydown", handleFirstInteraction)
+      document.removeEventListener("pointerdown", startMusic)
+      document.removeEventListener("keydown", startMusic)
     }
   }, [])
 
