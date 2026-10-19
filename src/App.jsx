@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import './index.css'
+import MusicPlayer from './MusicPlayer'
 
 function App() {
 
@@ -331,6 +332,8 @@ function App() {
         </p>
 
       </footer>
+
+      <MusicPlayer />
 
     </div>
   )
