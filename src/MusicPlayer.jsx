@@ -10,9 +10,9 @@ export default function MusicPlayer() {
 
     audio.volume = 0.35
 
-    // Attempt to play automatically when a visitor arrives.
+    // Attempt to autoplay when the visitor arrives.
     audio.play().catch((error) => {
-      console.log("Browser blocked autoplay:", error)
+      console.log("Autoplay blocked by browser:", error)
     })
   }, [])
 
