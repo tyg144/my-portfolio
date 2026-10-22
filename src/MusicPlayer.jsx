@@ -6,10 +6,16 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     const audio = audioRef.current;
-
     if (!audio) return;
 
+    const playlist = [
+      "/newmusic.mp3",
+      "/portfolio.mp3",
+    ];
+
+    let currentTrack = 0;
     audio.volume = 0.35;
+    audio.src = playlist[currentTrack];
 
     const playMusic = () => {
       audio.play().catch((error) => {
@@ -17,10 +23,16 @@ export default function MusicPlayer() {
       });
     };
 
-    // Try autoplay when the website loads.
+    const playNextTrack = () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      audio.src = playlist[currentTrack];
+      playMusic();
+    };
+
+    audio.addEventListener("ended", playNextTrack);
+
     playMusic();
 
-    // Retry after the visitor interacts with the website.
     document.addEventListener("pointerdown", playMusic, {
       once: true,
     });
@@ -30,18 +42,11 @@ export default function MusicPlayer() {
     });
 
     return () => {
+      audio.removeEventListener("ended", playNextTrack);
       document.removeEventListener("pointerdown", playMusic);
       document.removeEventListener("keydown", playMusic);
     };
   }, []);
 
-  return (
-    <audio
-      ref={audioRef}
-      src="/portfolio.mp3"
-      autoPlay
-      loop
-      preload="auto"
-    />
-  );
+  return <audio ref={audioRef} preload="auto" />;
 }
