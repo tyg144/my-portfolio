@@ -97,7 +97,7 @@ function App() {
           </h1>
 
           <h2>
-            Entrepreneur ♠
+            The Next Decade ♠
           </h2>
 
           <p className="description">
