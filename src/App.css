@@ -10,4 +10,19 @@ function App() {
   )
 }
 
-export default App
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero > .particle-orb-background {
+  z-index: -1;
+}
+
+.hero > .hero-content,
+.hero > .hero-image {
+  position: relative;
+  z-index: 1;
+}

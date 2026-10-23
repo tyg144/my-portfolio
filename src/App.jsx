@@ -1,8 +1,60 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import { createParticleOrb } from './ParticleOrb'
 import './index.css'
 import MusicPlayer from './MusicPlayer'
 import CustomCursor from './CustomCursor'
 import LoadingScreen from './LoadingScreen'
+import MiniParticleOrb from './MiniParticleOrb'
+
+function ParticleOrbBackground() {
+  const containerRef = useRef(null)
+  const [cambodiaTime, setCambodiaTime] = useState('')
+
+  // Live Cambodia clock — updates every second
+  useEffect(() => {
+    const updateTime = () => {
+      const time = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Phnom_Penh',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hourCycle: 'h23',
+      }).format(new Date())
+
+      setCambodiaTime(time)
+    }
+
+    updateTime()
+
+    const timer = setInterval(updateTime, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  // Keep the existing large particle orb
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const destroy = createParticleOrb(container)
+
+    return () => destroy()
+  }, [])
+
+  return (
+    <div className="contact-orb-widget">
+      <div className="contact-orb-timezone">
+        <span className="timezone-dot" />
+        <span>CAMBODIA — {cambodiaTime} GMT+7</span>
+      </div>
+
+      <div
+        ref={containerRef}
+        className="particle-orb-background"
+      />
+    </div>
+  )
+}
 
 function App() {
   const photoRef = useRef(null)
@@ -115,6 +167,8 @@ function App() {
       {/* ================= HERO ================= */}
 
       <section id="home" className="hero">
+        <MiniParticleOrb />
+
         <div className="hero-content">
           <p className="hello">HELLO, I'M</p>
 
@@ -144,36 +198,36 @@ function App() {
         </div>
 
 
-{/* ================= INTERACTIVE PHOTO ================= */}
+        {/* ================= INTERACTIVE PHOTO ================= */}
 
-<div className="hero-image">
-  <div
-    className="photo-card"
-    ref={photoRef}
-    onMouseMove={handlePhotoMove}
-    onMouseLeave={handlePhotoLeave}
-  >
-    {/* YOUR EXISTING PHOTO — KEEP IT */}
-    <img
-      src="/photo.jpg"
-      alt="Ty"
-      className="profile-photo"
-    />
-
-
-{/* SPINNING DENTAL LOGO ONLY */}
-<div className="dental-spin-badge">
-  <img
-    src="/logo.png"
-    alt="Dental logo"
-    className="dental-spin-center"
-  />
-</div>
+        <div className="hero-image">
+          <div
+            className="photo-card"
+            ref={photoRef}
+            onMouseMove={handlePhotoMove}
+            onMouseLeave={handlePhotoLeave}
+          >
+            {/* YOUR EXISTING PHOTO — KEEP IT */}
+            <img
+              src="/photo.jpg"
+              alt="Ty"
+              className="profile-photo"
+            />
 
 
-  </div>
-</div>
-</section>
+            {/* SPINNING DENTAL LOGO ONLY */}
+            <div className="dental-spin-badge">
+              <img
+                src="/logo.png"
+                alt="Dental logo"
+                className="dental-spin-center"
+              />
+            </div>
+
+
+          </div>
+        </div>
+      </section>
 
 
       {/* ================= ABOUT ================= */}
@@ -346,9 +400,11 @@ function App() {
       {/* ================= CONTACT ================= */}
 
       <section id="contact" className="section">
+        <ParticleOrbBackground />
+
         <p className="section-label">03 — CONTACT</p>
 
-        <h2 className="section-title">Contact</h2>
+        <h2 className="section-title">Let's Talk</h2>
 
         <div className="contact-content">
           <p className="contact-description">
