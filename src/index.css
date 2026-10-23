@@ -1981,3 +1981,68 @@ html {
     letter-spacing: 0.7px;
   }
 }
+
+/* MOBILE ONLY — PLACE CONTACT ORB BELOW THE BUTTONS */
+@media (max-width: 768px) {
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #contact .section-label,
+  #contact .section-title,
+  #contact .contact-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  #contact .contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #contact .contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  #contact .contact-orb-widget {
+    position: relative;
+    inset: auto;
+    transform: none;
+    width: min(88vw, 360px);
+    height: min(88vw, 360px);
+    margin: 24px auto 0;
+    flex-shrink: 0;
+    order: 10;
+    z-index: 0;
+  }
+
+  #contact .contact-orb-widget .particle-orb-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: auto;
+    top: 0;
+    transform: none;
+  }
+
+  #contact .contact-orb-timezone {
+    top: 4%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
