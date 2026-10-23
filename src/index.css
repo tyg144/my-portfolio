@@ -1792,20 +1792,26 @@ html {
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .mini-particle-orb {
-    width: 110px;
-    height: 110px;
-    right: 2%;
-    top: 18%;
-    transform: none;
-    opacity: 0.65;
-  }
-}
-
+/* Mobile — position mini orb beside tyG */
 .hero {
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .hero .mini-particle-orb {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+
+    /* Move orb beside tyG */
+    top: 50%;
+    right: 5%;
+
+    left: auto;
+    transform: translateY(-50%);
+    opacity: 0.65;
+    z-index: 1;
+  }
 }
 
 /* TIMEZONE LABEL ABOVE THE LARGE CONTACT ORB */
