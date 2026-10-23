@@ -1,0 +1,61 @@
+
+/* ===== tyG CUSTOM CURSOR ===== */
+
+@media (pointer: fine) {
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  .custom-cursor.cursor-visible {
+    opacity: 1;
+  }
+
+  .cursor-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    background: #f2f2f2;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cursor-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(235, 235, 235, 0.55);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition:
+      width 250ms ease,
+      height 250ms ease,
+      border-color 250ms ease,
+      background 250ms ease;
+  }
+
+  .custom-cursor.cursor-hover .cursor-ring {
+    width: 48px;
+    height: 48px;
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  /* Keep text selection and input cursors natural */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
