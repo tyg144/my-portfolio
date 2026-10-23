@@ -2046,3 +2046,43 @@ html {
     letter-spacing: 1px;
   }
 }
+
+/* MOBILE — MINI PARTICLE ORB BESIDE tyG */
+@media (max-width: 768px) {
+  #home .hero-content {
+    position: relative;
+  }
+
+  #home .hero-content .glitch {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+  }
+
+  #home .mini-particle-orb {
+    position: absolute;
+    top: 140px;
+    left: 125px;
+    width: 100px;
+    height: 100px;
+    max-width: none;
+    max-height: none;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #home .mini-particle-orb canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  #home .mini-particle-orb {
+    left: 105px;
+    top: 42px;
+    width: 85px;
+    height: 85px;
+  }
+}
