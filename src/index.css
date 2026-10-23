@@ -1787,31 +1787,25 @@ html {
 @media (max-width: 1000px) {
   .mini-particle-orb {
     width: 150px;
-    height: 150px;
+    height: 250px;
     right: 2%;
   }
 }
 
-/* Mobile — position mini orb beside tyG */
-.hero {
-  position: relative;
+/* Mobile */
+@media (max-width: 768px) {
+  .mini-particle-orb {
+    width: 110px;
+    height: 110px;
+    right: 2%;
+    top: 18%;
+    transform: none;
+    opacity: 0.65;
+  }
 }
 
-@media (max-width: 768px) {
-  .hero .mini-particle-orb {
-    position: absolute;
-    width: 75px;
-    height: 75px;
-
-    /* Move orb beside tyG */
-    top: 50%;
-    right: 5%;
-
-    left: auto;
-    transform: translateY(-50%);
-    opacity: 0.65;
-    z-index: 1;
-  }
+.hero {
+  position: relative;
 }
 
 /* TIMEZONE LABEL ABOVE THE LARGE CONTACT ORB */
@@ -2090,5 +2084,80 @@ html {
     top: 42px;
     width: 85px;
     height: 85px;
+  }
+}
+
+/* FIX — MINI ORB BESIDE tyG ON MOBILE ONLY */
+@media (max-width: 768px) {
+  #home {
+    position: relative;
+  }
+
+  #home > .mini-particle-orb {
+    position: absolute !important;
+
+    /* Position relative to the Home hero */
+    top: 105px !important;
+    left: 155px !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 85px !important;
+    height: 85px !important;
+
+    transform: none !important;
+    max-width: none !important;
+    max-height: none !important;
+
+    z-index: 3 !important;
+    pointer-events: none !important;
+  }
+
+  #home > .mini-particle-orb canvas {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  #home > .mini-particle-orb {
+    top: 100px !important;
+    left: 135px !important;
+    width: 75px !important;
+    height: 75px !important;
+  }
+}
+
+
+/* Keep the mini orb beside tyG on mobile */
+.name-with-orb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.name-with-orb .glitch {
+  margin: 0;
+}
+
+.name-with-orb .mini-particle-orb {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  flex: 0 0 75px;
+  width: 75px !important;
+  height: 75px !important;
+}
+
+/* Apply the inline layout only on mobile */
+@media (min-width: 769px) {
+  .name-with-orb .mini-particle-orb {
+    /* Preserve desktop positioning */
+    position: absolute !important;
   }
 }

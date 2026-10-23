@@ -167,14 +167,16 @@ function App() {
       {/* ================= HERO ================= */}
 
       <section id="home" className="hero">
-        <MiniParticleOrb />
 
         <div className="hero-content">
           <p className="hello">HELLO, I'M</p>
 
-          <h1 className="glitch" data-text="tyG">
-            tyG
-          </h1>
+          <div className="name-with-orb">
+            <h1 className="glitch" data-text="tyG">
+              tyG
+            </h1>
+            <MiniParticleOrb />
+          </div>
 
           <h2 className="decade-title">
             The Next Decade ♠
