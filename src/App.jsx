@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import './index.css'
 import MusicPlayer from './MusicPlayer'
 import CustomCursor from './CustomCursor'
+import LoadingScreen from './LoadingScreen'
 
 function App() {
   const photoRef = useRef(null)
@@ -93,6 +94,7 @@ function App() {
 
   return (
     <div className="portfolio">
+      <LoadingScreen />
       <CustomCursor />
 
 

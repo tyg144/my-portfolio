@@ -1,85 +1,96 @@
-
 import { useEffect, useState } from 'react'
 import './CustomCursor.css'
 
 export default function CustomCursor() {
-  const [enabled, setEnabled] = useState(false)
+  const [position, setPosition] = useState({
+    x: -100,
+    y: -100,
+  })
+
+  const [ringPosition, setRingPosition] = useState({
+    x: -100,
+    y: -100,
+  })
+
+  const [isHovering, setIsHovering] = useState(false)
 
   useEffect(() => {
-    const finePointer = window.matchMedia('(pointer: fine)')
-    const reducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    )
-
-    const updateEnabled = () => {
-      setEnabled(finePointer.matches && !reducedMotion.matches)
+    if (
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return
     }
-
-    updateEnabled()
-    finePointer.addEventListener('change', updateEnabled)
-    reducedMotion.addEventListener('change', updateEnabled)
-
-    return () => {
-      finePointer.removeEventListener('change', updateEnabled)
-      reducedMotion.removeEventListener('change', updateEnabled)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!enabled) return
-
-    const cursor = document.querySelector('.custom-cursor')
-    if (!cursor) return
 
     let frame
-    let mouseX = -100
-    let mouseY = -100
-    let ringX = mouseX
-    let ringY = mouseY
+    let targetX = -100
+    let targetY = -100
+    let ringX = -100
+    let ringY = -100
 
-    const move = (event) => {
-      mouseX = event.clientX
-      mouseY = event.clientY
-      cursor.classList.add('cursor-visible')
+    const handleMouseMove = (event) => {
+      targetX = event.clientX
+      targetY = event.clientY
 
-      const target = event.target
-      cursor.classList.toggle(
-        'cursor-hover',
-        Boolean(target.closest('a, button, [role="button"]'))
+      setPosition({ x: targetX, y: targetY })
+    }
+
+    const animateRing = () => {
+      ringX += (targetX - ringX) * 0.14
+      ringY += (targetY - ringY) * 0.14
+
+      setRingPosition({ x: ringX, y: ringY })
+
+      frame = requestAnimationFrame(animateRing)
+    }
+
+    const handleMouseOver = (event) => {
+      setIsHovering(
+        Boolean(
+          event.target.closest(
+            'a, button, [role="button"], input, textarea'
+          )
+        )
       )
     }
 
-    const leave = () => {
-      cursor.classList.remove('cursor-visible')
-    }
+    window.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseover', handleMouseOver)
 
-    const animate = () => {
-      ringX += (mouseX - ringX) * 0.18
-      ringY += (mouseY - ringY) * 0.18
-
-      cursor.style.transform =
-        `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
-
-      frame = requestAnimationFrame(animate)
-    }
-
-    window.addEventListener('pointermove', move)
-    document.documentElement.addEventListener('pointerleave', leave)
-    frame = requestAnimationFrame(animate)
+    frame = requestAnimationFrame(animateRing)
 
     return () => {
-      window.removeEventListener('pointermove', move)
-      document.documentElement.removeEventListener('pointerleave', leave)
+      window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseover', handleMouseOver)
       cancelAnimationFrame(frame)
     }
-  }, [enabled])
+  }, [])
 
-  if (!enabled) return null
+  if (
+    typeof window !== 'undefined' &&
+    (
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+  ) {
+    return null
+  }
 
   return (
-    <div className="custom-cursor" aria-hidden="true">
-      <span className="cursor-dot" />
-      <span className="cursor-ring" />
-    </div>
+    <>
+      <div
+        className="custom-cursor"
+        style={{
+          transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
+        }}
+      />
+
+      <div
+        className={`custom-cursor-ring${isHovering ? ' cursor-hover' : ''}`}
+        style={{
+          transform: `translate3d(${ringPosition.x}px, ${ringPosition.y}px, 0) translate(-50%, -50%)`,
+        }}
+      />
+    </>
   )
 }
