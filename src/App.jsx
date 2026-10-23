@@ -141,23 +141,38 @@ function App() {
           </div>
         </div>
 
-        {/* ================= INTERACTIVE PHOTO ================= */}
 
-        <div className="hero-image">
-          <div
-            className="photo-card"
-            ref={photoRef}
-            onMouseMove={handlePhotoMove}
-            onMouseLeave={handlePhotoLeave}
-          >
-            <img
-              src="/photo.jpg"
-              alt="Ty"
-              className="profile-photo"
-            />
-          </div>
-        </div>
-      </section>
+{/* ================= INTERACTIVE PHOTO ================= */}
+
+<div className="hero-image">
+  <div
+    className="photo-card"
+    ref={photoRef}
+    onMouseMove={handlePhotoMove}
+    onMouseLeave={handlePhotoLeave}
+  >
+    {/* YOUR EXISTING PHOTO — KEEP IT */}
+    <img
+      src="/photo.jpg"
+      alt="Ty"
+      className="profile-photo"
+    />
+
+
+{/* SPINNING DENTAL LOGO ONLY */}
+<div className="dental-spin-badge">
+  <img
+    src="/logo.png"
+    alt="Dental logo"
+    className="dental-spin-center"
+  />
+</div>
+
+
+  </div>
+</div>
+</section>
+
 
       {/* ================= ABOUT ================= */}
 

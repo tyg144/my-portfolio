@@ -1539,3 +1539,125 @@ html {
     background: rgba(255, 255, 255, 0.09);
   }
 }
+
+
+/* ===== SPINNING DENTAL LOGO BADGE ===== */
+
+.photo-card {
+  position: relative;
+  overflow: visible;
+}
+
+.dental-spin-badge {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -35px;
+  bottom: 5px;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.dental-spin-badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: dentalBadgeSpin 18s linear infinite;
+}
+
+.dental-spin-badge text {
+  fill: #d0d0d0;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.dental-spin-center {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  background: transparent;
+  z-index: 1;
+}
+
+@keyframes dentalBadgeSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .dental-spin-badge {
+    width: 115px;
+    height: 115px;
+    right: -12px;
+    bottom: 5px;
+  }
+
+  .dental-spin-center {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-spin-badge svg {
+    animation: none;
+  }
+}
+
+
+/* ===== SPINNING DENTAL LOGO ONLY ===== */
+
+.photo-card {
+  position: relative;
+  overflow: visible;
+}
+
+.dental-spin-badge {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -25px;
+  bottom: 15px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dental-spin-center {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  animation: dentalLogoSpin 8s linear infinite;
+}
+
+@keyframes dentalLogoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .dental-spin-badge {
+    width: 65px;
+    height: 65px;
+    right: -10px;
+    bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-spin-center {
+    animation: none;
+  }
+}
