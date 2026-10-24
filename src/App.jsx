@@ -4,6 +4,7 @@ import './index.css'
 import MusicPlayer from './MusicPlayer'
 import CustomCursor from './CustomCursor'
 import LoadingScreen from './LoadingScreen'
+import ScrollRail from "./ScrollRail";
 
 function ParticleOrbBackground() {
   const containerRef = useRef(null)
@@ -313,13 +314,15 @@ function App() {
 
       {/* EXPERIENCE */}
       <section id="experience" className="section experience-section">
+        <ScrollRail />
+
         <p className="section-label">03 — EXPERIENCE</p>
         <h2 className="section-title">Where I’ve Been.</h2>
 
         <div className="experience-list">
 
           {/* CURRENT / FEATURED ROLE */}
-          <article className="experience-item">
+          <article id="dental" className="experience-item">
             <p className="experience-date">
               <span className="current-badge">
                 <span className="current-dot"></span>
@@ -345,7 +348,7 @@ function App() {
           </article>
 
           {/* FULL-STACK DEVELOPER */}
-          <article className="experience-item">
+          <article id="developer" className="experience-item">
             <p className="experience-date">JUN 2022 — FEB 2024</p>
 
             <div className="experience-details">
@@ -367,7 +370,7 @@ function App() {
           </article>
 
           {/* GAME MOD MENU DEVELOPER */}
-          <article className="experience-item">
+          <article id="gamemod" className="experience-item">
             <p className="experience-date">SEP 2019 — MAY 2024</p>
 
             <div className="experience-details">
