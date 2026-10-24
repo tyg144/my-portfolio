@@ -4,7 +4,6 @@ import './index.css'
 import MusicPlayer from './MusicPlayer'
 import CustomCursor from './CustomCursor'
 import LoadingScreen from './LoadingScreen'
-import MiniParticleOrb from './MiniParticleOrb'
 
 function ParticleOrbBackground() {
   const containerRef = useRef(null)
@@ -171,12 +170,9 @@ function App() {
         <div className="hero-content">
           <p className="hello">HELLO, I'M</p>
 
-          <div className="name-with-orb">
-            <h1 className="glitch" data-text="tyG">
-              tyG
-            </h1>
-            <MiniParticleOrb />
-          </div>
+          <h1 className="glitch" data-text="tyG">
+            tyG
+          </h1>
 
           <h2 className="decade-title">
             The Next Decade ♠
