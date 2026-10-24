@@ -2070,3 +2070,60 @@ html {
   visibility: visible !important;
   transform: none !important;
 }
+
+/* EXPERIENCE RAIL — RESPONSIVE */
+#experience {
+  position: relative;
+}
+
+#experience .experience-list {
+  position: relative;
+  margin-left: 35px;
+}
+
+/* MOBILE EXPERIENCE */
+@media (max-width: 768px) {
+  #experience {
+    padding-left: 6%;
+    padding-right: 5%;
+  }
+
+  /* Move scroll rail slightly to the right */
+  #experience .scroll-rail {
+    left: 10px !important;
+  }
+
+  #experience .experience-list {
+    margin-left: 25px;
+  }
+
+  #experience .experience-item {
+    min-width: 0;
+  }
+
+  #experience .experience-details {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  #experience .experience-description {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  #experience .experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 430px) {
+  #experience .experience-list {
+    margin-left: 22px;
+  }
+
+  #experience .experience-details h3 {
+    font-size: 18px;
+  }
+}
