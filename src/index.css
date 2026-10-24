@@ -1869,6 +1869,31 @@ html {
   }
 }
 
+/* =====================================
+   MOBILE PARTICLE ORB FIX
+   ===================================== */
+
+@media (max-width: 768px) {
+
+  /* Large orb in the Contact section */
+  #contact {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .contact-orb-widget {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: min(120vw, 520px);
+    height: min(120vw, 520px);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* Keep the canvas aligned with its wrapper */
   .contact-orb-widget .particle-orb-background {
     position: absolute;
@@ -1970,61 +1995,32 @@ html {
     }
   }
 
-/* =========================================
-   CONTACT ORB — MOBILE SIZE FIX
-   Desktop styles remain unchanged
-========================================= */
-
+  /* FORCE BIGGER CONTACT ORB ON MOBILE */
 @media screen and (max-width: 768px) {
-  #contact {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-  }
-
   #contact .contact-orb-widget {
-    position: absolute !important;
-    top: 79% !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-
-    width: 150vw !important;
-    height: 150vw !important;
-
-    margin: 0 !important;
-    transform: translate(-50%, -50%) !important;
-    pointer-events: none;
-    z-index: 0;
+    width: 110vw !important;
+    height: 110vw !important;
+    max-width: none !important;
+    max-height: none !important;
   }
 
   #contact .contact-orb-widget .particle-orb-background {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    transform: none !important;
-  }
-
-  #contact .contact-orb-widget canvas {
-    display: block;
     width: 100% !important;
     height: 100% !important;
   }
+}
 
-  #contact .section-label,
-  #contact .section-title,
-  #contact .contact-content {
-    position: relative;
-    z-index: 1;
+/* MOBILE ONLY — SLIGHTLY SMALLER CONTACT ORB */
+@media screen and (max-width: 768px) {
+  #contact .contact-orb-widget {
+    width: 90vw !important;
+    height: 90vw !important;
   }
+}
 
+/* MOBILE ONLY — MOVE TIMEZONE UP */
+@media screen and (max-width: 768px) {
   #contact .contact-orb-timezone {
-    top: 8% !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    font-size: 8px;
-    letter-spacing: 0.7px;
+    top: 1% !important;
   }
 }
