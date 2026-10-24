@@ -152,7 +152,6 @@ function App() {
       {/* ================= NAVBAR ================= */}
 
       <nav className="navbar">
-        <div className="logo">TY.</div>
 
         <div className="nav-links">
           <a href="#home">Home</a>
