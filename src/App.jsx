@@ -277,7 +277,7 @@ function App() {
         <div className="skills-grid">
           <div className="skill-card">
             <span className="skill-number">01</span>
-            <h3>Financial Markets 𖠿</h3>
+            <h3>Financial Markets <span className="skill-symbol">𖠿</span></h3>
             <p>
               Analyzing market structure, price action, liquidity,
               and trading opportunities.
@@ -286,7 +286,7 @@ function App() {
 
           <div className="skill-card">
             <span className="skill-number">02</span>
-            <h3>Dentistry ⛑︎</h3>
+            <h3>Dentistry <span className="skill-symbol">⛑︎</span></h3>
             <p>
               Providing patient-focused dental care with precision,
               attention to detail, and continuous learning.
@@ -295,7 +295,7 @@ function App() {
 
           <div className="skill-card">
             <span className="skill-number">03</span>
-            <h3>Trading &amp; Risk Management ₿</h3>
+            <h3>Trading &amp; Risk Management <span className="skill-symbol">₿</span></h3>
             <p>
               Developing disciplined strategies with proper risk
               management and execution.
@@ -304,16 +304,13 @@ function App() {
 
           <div className="skill-card">
             <span className="skill-number">04</span>
-            <h3>Research &amp; Thesis ⌕</h3>
+            <h3>Research &amp; Thesis <span className="skill-symbol">⌕</span></h3>
             <p>
               Turning ideas and problems into practical solutions.
             </p>
           </div>
         </div>
       </section>
-
-
-
 
       {/* EXPERIENCE */}
       <section id="experience" className="section experience-section">
