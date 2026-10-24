@@ -2025,33 +2025,11 @@ html {
   }
 }
 
-/* Float symbols only — keep text still */
+}
+/* Restore floating skill symbols */
 .skill-symbol {
-  display: inline-block;
-  animation: skill-symbol-float 3s ease-in-out infinite;
+  animation: skill-symbol-float 3s ease-in-out infinite !important;
   will-change: transform;
-}
-
-.skill-card:nth-child(2) .skill-symbol {
-  animation-delay: 0.4s;
-}
-
-.skill-card:nth-child(3) .skill-symbol {
-  animation-delay: 0.8s;
-}
-
-.skill-card:nth-child(4) .skill-symbol {
-  animation-delay: 1.2s;
-}
-
-@keyframes skill-symbol-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2125,5 +2103,46 @@ html {
 
   #experience .experience-details h3 {
     font-size: 18px;
+  }
+}
+
+/* ===== tyG FLOATING SKILL SYMBOLS ===== */
+
+#skills .skill-symbol {
+  display: inline-block !important;
+  position: relative;
+  animation: tyg-skill-float 2s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+#skills .skill-card:nth-child(1) .skill-symbol {
+  animation-delay: 0s !important;
+}
+
+#skills .skill-card:nth-child(2) .skill-symbol {
+  animation-delay: 0.4s !important;
+}
+
+#skills .skill-card:nth-child(3) .skill-symbol {
+  animation-delay: 0.8s !important;
+}
+
+#skills .skill-card:nth-child(4) .skill-symbol {
+  animation-delay: 1.2s !important;
+}
+
+@keyframes tyg-skill-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #skills .skill-symbol {
+    animation: none !important;
   }
 }

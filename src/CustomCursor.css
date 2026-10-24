@@ -168,3 +168,26 @@
   border-radius: 50%;
 }
 
+/* ===== PC LOADING SCREEN CENTER FIX ===== */
+
+@media (min-width: 769px) {
+  .loading-screen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .loading-screen .loader-center {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+    width: max-content;
+    max-width: 90vw;
+    transform: none !important;
+  }
+}
