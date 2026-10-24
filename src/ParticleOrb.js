@@ -10,7 +10,11 @@ export function createParticleOrb(container, options = {}) {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-    camera.position.z = options.mini ? 5.2 : 8.5;
+    camera.position.z = options.mini
+        ? 5.2
+        : window.innerWidth < 480
+            ? 6.5
+            : 8.5;
 
     const renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -284,6 +288,11 @@ export function createParticleOrb(container, options = {}) {
         if (!width || !height) return;
 
         camera.aspect = width / height;
+        camera.position.z = options.mini
+            ? 5.2
+            : width < 480
+                ? 5.5
+                : 8.5;
         camera.updateProjectionMatrix();
 
         renderer.setSize(width, height);
@@ -291,7 +300,7 @@ export function createParticleOrb(container, options = {}) {
         if (options.mini) {
             root.scale.setScalar(1);
         } else if (width < 480) {
-            root.scale.setScalar(0.72);
+            root.scale.setScalar(1.3);
         } else if (width < 768) {
             root.scale.setScalar(0.85);
         } else {

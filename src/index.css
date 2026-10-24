@@ -1763,51 +1763,6 @@ html {
   z-index: 1;
 }
 
-/* MINI ORB — HOME PAGE */
-
-.mini-particle-orb {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  right: 72%;
-  top: 30%;
-  transform: translateY(-50%);
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.88;
-}
-
-.mini-particle-orb canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Tablet */
-@media (max-width: 1000px) {
-  .mini-particle-orb {
-    width: 150px;
-    height: 250px;
-    right: 2%;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .mini-particle-orb {
-    width: 110px;
-    height: 110px;
-    right: 2%;
-    top: 18%;
-    transform: none;
-    opacity: 0.65;
-  }
-}
-
-.hero {
-  position: relative;
-}
-
 /* TIMEZONE LABEL ABOVE THE LARGE CONTACT ORB */
 
 .contact-orb-widget {
@@ -1914,31 +1869,6 @@ html {
   }
 }
 
-/* =====================================
-   MOBILE PARTICLE ORB FIX
-   ===================================== */
-
-@media (max-width: 768px) {
-
-  /* Large orb in the Contact section */
-  #contact {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .contact-orb-widget {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    width: min(120vw, 520px);
-    height: min(120vw, 520px);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
   /* Keep the canvas aligned with its wrapper */
   .contact-orb-widget .particle-orb-background {
     position: absolute;
@@ -1962,202 +1892,139 @@ html {
     white-space: nowrap;
   }
 
-  /* Mini orb: keep its container responsive */
-  .mini-particle-orb {
-    max-width: 42vw;
-    max-height: 42vw;
-  }
-}
+  /* Smaller phones */
+  @media (max-width: 430px) {
+    .contact-orb-widget {
+      width: 115vw;
+      height: 115vw;
+    }
 
-/* Smaller phones */
-@media (max-width: 430px) {
-  .contact-orb-widget {
-    width: 115vw;
-    height: 115vw;
+    .contact-orb-timezone {
+      font-size: 8px;
+      letter-spacing: 0.7px;
+    }
   }
 
-  .contact-orb-timezone {
-    font-size: 8px;
-    letter-spacing: 0.7px;
-  }
-}
+  /* MOBILE ONLY — PLACE CONTACT ORB BELOW THE BUTTONS */
+  @media (max-width: 768px) {
+    #contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
 
-/* MOBILE ONLY — PLACE CONTACT ORB BELOW THE BUTTONS */
-@media (max-width: 768px) {
+    #contact .section-label,
+    #contact .section-title,
+    #contact .contact-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    #contact .contact-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #contact .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #contact .contact-orb-widget {
+      position: relative;
+      inset: auto;
+      transform: none;
+      width: min(100vw, 420px);
+      height: min(100vw, 420px);
+      margin: 24px auto 0;
+      flex-shrink: 0;
+      order: 10;
+      z-index: 0;
+    }
+
+    #contact .contact-orb-widget .particle-orb-background {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      right: auto;
+      top: 0;
+      transform: none;
+    }
+
+    #contact .contact-orb-timezone {
+      top: 4%;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+  }
+
+/* =========================================
+   CONTACT ORB — MOBILE SIZE FIX
+   Desktop styles remain unchanged
+========================================= */
+
+@media screen and (max-width: 768px) {
   #contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    isolation: isolate;
     overflow: hidden;
+  }
+
+  #contact .contact-orb-widget {
+    position: absolute !important;
+    top: 79% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 150vw !important;
+    height: 150vw !important;
+
+    margin: 0 !important;
+    transform: translate(-50%, -50%) !important;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #contact .contact-orb-widget .particle-orb-background {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  #contact .contact-orb-widget canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   #contact .section-label,
   #contact .section-title,
   #contact .contact-content {
     position: relative;
-    z-index: 2;
-    width: 100%;
-  }
-
-  #contact .contact-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #contact .contact-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    position: relative;
-    z-index: 2;
-  }
-
-  #contact .contact-orb-widget {
-    position: relative;
-    inset: auto;
-    transform: none;
-    width: min(88vw, 360px);
-    height: min(88vw, 360px);
-    margin: 24px auto 0;
-    flex-shrink: 0;
-    order: 10;
-    z-index: 0;
-  }
-
-  #contact .contact-orb-widget .particle-orb-background {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    right: auto;
-    top: 0;
-    transform: none;
-  }
-
-  #contact .contact-orb-timezone {
-    top: 4%;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    font-size: 9px;
-    letter-spacing: 1px;
-  }
-}
-
-/* MOBILE — MINI PARTICLE ORB BESIDE tyG */
-@media (max-width: 768px) {
-  #home .hero-content {
-    position: relative;
-  }
-
-  #home .hero-content .glitch {
-    display: inline-block;
-    position: relative;
-    z-index: 2;
-  }
-
-  #home .mini-particle-orb {
-    position: absolute;
-    top: 140px;
-    left: 125px;
-    width: 100px;
-    height: 100px;
-    max-width: none;
-    max-height: none;
-    pointer-events: none;
     z-index: 1;
   }
 
-  #home .mini-particle-orb canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (max-width: 430px) {
-  #home .mini-particle-orb {
-    left: 105px;
-    top: 42px;
-    width: 85px;
-    height: 85px;
-  }
-}
-
-/* FIX — MINI ORB BESIDE tyG ON MOBILE ONLY */
-@media (max-width: 768px) {
-  #home {
-    position: relative;
-  }
-
-  #home > .mini-particle-orb {
-    position: absolute !important;
-
-    /* Position relative to the Home hero */
-    top: 105px !important;
-    left: 155px !important;
+  #contact .contact-orb-timezone {
+    top: 8% !important;
+    left: 50% !important;
     right: auto !important;
-    bottom: auto !important;
-
-    width: 85px !important;
-    height: 85px !important;
-
-    transform: none !important;
-    max-width: none !important;
-    max-height: none !important;
-
-    z-index: 3 !important;
-    pointer-events: none !important;
-  }
-
-  #home > .mini-particle-orb canvas {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-}
-
-@media (max-width: 430px) {
-  #home > .mini-particle-orb {
-    top: 100px !important;
-    left: 135px !important;
-    width: 75px !important;
-    height: 75px !important;
-  }
-}
-
-
-/* Keep the mini orb beside tyG on mobile */
-.name-with-orb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-}
-
-.name-with-orb .glitch {
-  margin: 0;
-}
-
-.name-with-orb .mini-particle-orb {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-  flex: 0 0 75px;
-  width: 75px !important;
-  height: 75px !important;
-}
-
-/* Apply the inline layout only on mobile */
-@media (min-width: 769px) {
-  .name-with-orb .mini-particle-orb {
-    /* Preserve desktop positioning */
-    position: absolute !important;
+    transform: translateX(-50%) !important;
+    font-size: 8px;
+    letter-spacing: 0.7px;
   }
 }
