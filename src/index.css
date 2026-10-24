@@ -2024,3 +2024,49 @@ html {
     top: 1% !important;
   }
 }
+
+/* Float symbols only — keep text still */
+.skill-symbol {
+  display: inline-block;
+  animation: skill-symbol-float 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.skill-card:nth-child(2) .skill-symbol {
+  animation-delay: 0.4s;
+}
+
+.skill-card:nth-child(3) .skill-symbol {
+  animation-delay: 0.8s;
+}
+
+.skill-card:nth-child(4) .skill-symbol {
+  animation-delay: 1.2s;
+}
+
+@keyframes skill-symbol-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-symbol {
+    animation: none !important;
+  }
+}
+
+/* FIX — KEEP EXPERIENCE TEXT VISIBLE */
+#experience .experience-item .experience-date,
+#experience .experience-item .experience-details h3,
+#experience .experience-item .experience-company,
+#experience .experience-item .experience-description,
+#experience .experience-item .experience-tags {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
