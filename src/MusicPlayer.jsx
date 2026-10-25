@@ -14,7 +14,7 @@ export default function MusicPlayer() {
     ];
 
     let currentTrack = 0;
-    audio.volume = currentTrack === 0 ? 0.20 : 0.35;
+    audio.volume = currentTrack === 0 ? 0.15 : 0.35;
     audio.src = playlist[currentTrack];
 
     const playMusic = () => {
