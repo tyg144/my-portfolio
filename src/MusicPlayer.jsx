@@ -26,7 +26,7 @@ export default function MusicPlayer() {
     const playNextTrack = () => {
       currentTrack = (currentTrack + 1) % playlist.length;
       audio.src = playlist[currentTrack];
-      audio.volume = currentTrack === 0 ? 0.20 : 0.35;
+      audio.volume = currentTrack === 0 ? 0.08 : 0.35;
       playMusic();
     };
 
